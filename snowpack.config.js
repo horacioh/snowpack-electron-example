@@ -8,7 +8,7 @@ module.exports = {
     /* ... */
   ],
   installOptions: {
-    /* ... */
+    treeshake: true,
   },
   devOptions: {
     /* ... */
@@ -21,6 +21,7 @@ module.exports = {
   },
 
   alias: {
-    /* ... */
+    react: 'preact/compat',
+    'react-dom': 'preact/compat',
   },
 };

@@ -1,11 +1,11 @@
 import { h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
-import logo from './logo.png';
+import { Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 
 function App() {
   // Create the count state.
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(100);
   // Create the counter (+1 every second).
   useEffect(() => {
     const timer = setTimeout(() => setCount(count + 1), 1000);
@@ -15,23 +15,50 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://preactjs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Preact
-          </a>
-        </p>
+        <h1>Hello Snowpack + Electron</h1>
+        <ul>
+          <li>
+            <Link to="/about">about</Link>
+          </li>
+          <li>
+            <Link to="/other">other</Link>
+          </li>
+        </ul>
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => {
+              return (
+                <div>
+                  <h2>Home page</h2>
+                </div>
+              );
+            }}
+          />
+          <Route
+            path="/about"
+            exact
+            render={() => {
+              return (
+                <div>
+                  <h2>About page</h2>
+                </div>
+              );
+            }}
+          />
+          <Route
+            path="/other"
+            exact
+            render={() => {
+              return (
+                <div>
+                  <h2>Other page</h2>
+                </div>
+              );
+            }}
+          />
+        </Switch>
       </header>
     </div>
   );

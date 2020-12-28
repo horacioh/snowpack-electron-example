@@ -1,13 +1,33 @@
 {
+  "name": "electron-snowpack-example",
+  "version": "0.1.0",
+  "homepage": "./",
+  "main": "src/start.js",
+  "build": {
+    "appId": "com.electron.electron-with-snowpack",
+    "win": {
+      "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
+    },
+    "directories": {
+      "buildResources": "build"
+    }
+  },
   "scripts": {
-    "start": "snowpack dev",
+    "start": "nf start -p 8080",
+    "react-start": "BROWSER=none snowpack dev",
+    "electron": "electron .",
+    "electron-start": "node src/start-react",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "prettier --check \"src/**/*.{js,jsx}\"",
     "build": "snowpack build",
     "test": "jest",
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx}\""
+    "pack": "electron-builder build --mac",
+    "dist": "yarn build && yarn pack",
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "preact": "^10.4.6"
+    "preact": "^10.4.6",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@prefresh/snowpack": "^2.0.1",
@@ -15,8 +35,10 @@
     "@snowpack/plugin-dotenv": "^2.0.4",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/preact": "^2.0.0",
+    "electron": "^11.1.1",
+    "electron-builder": "^22.9.1",
     "jest": "^26.2.2",
     "prettier": "^2.0.5",
-    "snowpack": "^2.16.0"
+    "snowpack": "^3.0.0-rc.2"
   }
 }

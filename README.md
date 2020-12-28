@@ -25,3 +25,7 @@ It correctly bundles Preact in production mode and optimizes the build for the b
 ### Q: What about Eject?
 
 No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+
+### Reference
+
+- [React with Electron guide: a practical tutorial](https://flaviocopes.com/react-electron/)
